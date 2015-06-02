@@ -57,3 +57,7 @@ def permutations(n, k):
     from math import factorial
 
     return factorial(n) / factorial(n - k)
+
+
+def digits(n):
+    return [int(x) for x in str(n)]
