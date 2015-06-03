@@ -85,41 +85,5 @@ def is_abundant(n):
     return sum(proper_divisors(n)) > n
 
 
-# def sum_of_factors(n):
-#     sqrt = int(n ** 0.5)
-#     result = 1
-#
-#     if n == sqrt * sqrt:
-#         result += sqrt
-#         sqrt -= 1
-#
-#     for x in range(2, sqrt + 1):
-#         if n % x == 0:
-#             result += x + (n / x)
-#
-#     return result
-
-
-# def sum_of_factors(n):
-#     initial_n = n
-#     sum = 1
-#     primes_list = list(primes(int(n ** 0.5 + 1)))
-#     p = primes_list[0]
-#     i = 0
-#     j = 0
-#
-#     while p * p <= n and n > 1 and i < len(primes_list):
-#         p = primes_list[i]
-#         i += 1
-#         if n % p == 0:
-#             j = p *p
-#             n = n / p
-#             while n % p == 0:
-#                 j = j * p
-#                 n = n / p
-#             sum = sum * (j - 1) / (p - 1)
-#
-#     if n > 1:
-#         sum *= n + 1
-#
-#     return sum - initial_n
+def quadratic(x, a, b, c):
+    return (a * (x ** 2)) + (b * x) + c
