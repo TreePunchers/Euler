@@ -1,12 +1,13 @@
 def seeded_series(seed_a, seed_b, iterations):
     a, b = seed_a, seed_b
     for x in range(iterations):
-        a, b = b, a + b
         yield a
+        a, b = b, a + b
 
 
 def fib(iterations):
-    return seeded_series(0, 1, iterations)
+    for n in seeded_series(1, 1, iterations):
+        yield n
 
 
 def primes(max):
@@ -61,3 +62,64 @@ def permutations(n, k):
 
 def digits(n):
     return [int(x) for x in str(n)]
+
+
+def proper_divisors(n):
+    yield 1
+
+    largest = int(n ** 0.5)
+    if largest * largest == n:
+        yield largest
+    else:
+        largest += 1
+
+    for x in range(2, largest):
+        if n % x == 0:
+            yield x
+            yield n / x
+
+
+def is_abundant(n):
+    if n < 12:
+        return False
+    return sum(proper_divisors(n)) > n
+
+
+# def sum_of_factors(n):
+#     sqrt = int(n ** 0.5)
+#     result = 1
+#
+#     if n == sqrt * sqrt:
+#         result += sqrt
+#         sqrt -= 1
+#
+#     for x in range(2, sqrt + 1):
+#         if n % x == 0:
+#             result += x + (n / x)
+#
+#     return result
+
+
+# def sum_of_factors(n):
+#     initial_n = n
+#     sum = 1
+#     primes_list = list(primes(int(n ** 0.5 + 1)))
+#     p = primes_list[0]
+#     i = 0
+#     j = 0
+#
+#     while p * p <= n and n > 1 and i < len(primes_list):
+#         p = primes_list[i]
+#         i += 1
+#         if n % p == 0:
+#             j = p *p
+#             n = n / p
+#             while n % p == 0:
+#                 j = j * p
+#                 n = n / p
+#             sum = sum * (j - 1) / (p - 1)
+#
+#     if n > 1:
+#         sum *= n + 1
+#
+#     return sum - initial_n
