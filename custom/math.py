@@ -87,3 +87,16 @@ def is_abundant(n):
 
 def quadratic(x, a, b, c):
     return (a * (x ** 2)) + (b * x) + c
+
+
+def list_prod(values):
+    from operator import mul
+    from functools import reduce
+    return reduce(mul, values, 1)
+
+
+def tuple_to_int(t):
+    try:
+        return int(''.join(map(str, t)))
+    except ValueError:
+        return 0
