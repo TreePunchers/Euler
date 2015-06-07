@@ -3,6 +3,7 @@ from custom.math import primes
 top = 1000000
 possible_primes_list = list([x for x in primes(top) if not any(c in "0468" for c in str(x))])
 
+
 def prime_truncatable(n):
     string_rep = str(n)
     length = len(str(string_rep))
