@@ -1,7 +1,7 @@
 # TODO: Make this something other than the most inefficient solution ever made for anything ever
 
 from itertools import permutations
-from custom.math import tuple_to_int
+from custom.math import tupletoint
 
 numbers = list("123456789")
 final = []
@@ -13,8 +13,8 @@ for i in range(1, 10):
             for second in permutations(remaining_one, j):
                 remaining_two = [x for x in remaining_one if x not in second]
                 for possible_prod in permutations(remaining_two):
-                    chicken = tuple_to_int(possible_prod)
-                    if tuple_to_int(first) * tuple_to_int(second) == chicken:
+                    chicken = tupletoint(possible_prod)
+                    if tupletoint(first) * tupletoint(second) == chicken:
                         final.append(chicken)
 
 print(sum(set(final)))

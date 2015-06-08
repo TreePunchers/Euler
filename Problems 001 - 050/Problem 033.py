@@ -1,4 +1,4 @@
-from custom.math import digits, list_prod
+from custom.math import digits, listprod
 from fractions import Fraction
 
 # Last term for first-second swap if true or second-first swap if false
@@ -19,4 +19,4 @@ for fract in fractions_to_test:
     except ZeroDivisionError:
         pass
 
-print(list_prod(solutions))
+print(listprod(solutions))

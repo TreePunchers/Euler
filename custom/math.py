@@ -1,4 +1,4 @@
-def seeded_series(seed_a, seed_b, iterations):
+def seededseries(seed_a, seed_b, iterations):
     a, b = seed_a, seed_b
     for x in range(iterations):
         yield a
@@ -6,7 +6,7 @@ def seeded_series(seed_a, seed_b, iterations):
 
 
 def fib(iterations):
-    for n in seeded_series(1, 1, iterations):
+    for n in seededseries(1, 1, iterations):
         yield n
 
 
@@ -42,7 +42,7 @@ def hexagonalnumber(n):
     return n * (2 * n - 1)
 
 
-def number_of_divisors(n):
+def numberofdivisors(n):
     nod = 0
     sqrt = int(n ** 0.5)
 
@@ -72,7 +72,7 @@ def digits(n):
     return [int(x) for x in str(n)]
 
 
-def proper_divisors(n):
+def properdivisors(n):
     yield 1
 
     largest = int(n ** 0.5)
@@ -87,24 +87,37 @@ def proper_divisors(n):
             yield n / x
 
 
-def is_abundant(n):
+def isabundant(n):
     if n < 12:
         return False
-    return sum(proper_divisors(n)) > n
+    return sum(properdivisors(n)) > n
 
 
 def quadratic(x, a, b, c):
     return (a * (x ** 2)) + (b * x) + c
 
 
-def list_prod(values):
+def listprod(values):
     from operator import mul
     from functools import reduce
     return reduce(mul, values, 1)
 
 
-def tuple_to_int(t):
+def tupletoint(t):
     try:
         return int(''.join(map(str, t)))
     except ValueError:
         return 0
+
+
+def primefactors(n):
+    primfac = []
+    d = 2
+    while d * d <= n:
+        while n % d == 0:
+            primfac.append(d)
+            n //= d
+        d += 1
+    if n > 1:
+        primfac.append(n)
+    return primfac
