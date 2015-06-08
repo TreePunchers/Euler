@@ -30,8 +30,16 @@ def lcm(x, y):
     return (x * y) / gcd(x, y)
 
 
-def triangle_number(n):
-    return int((n * (n + 1)) / 2)
+def trianglenumber(n):
+    return (n * (n + 1)) / 2
+
+
+def pentagonalnumber(n):
+    return n * (3 * n - 1) / 2
+
+
+def hexagonalnumber(n):
+    return n * (2 * n - 1)
 
 
 def number_of_divisors(n):
