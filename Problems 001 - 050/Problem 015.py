@@ -4,4 +4,3 @@ def num_paths(x):
     return combinations(x * 2, x)
 
 print(num_paths(20))
-print(permutations(10, 2))
