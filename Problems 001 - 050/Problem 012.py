@@ -1,10 +1,10 @@
-from custom.math import numberofdivisors
+from custom.math import number_of_divisors
 
 i = 1
 number = 0
 
-while numberofdivisors(number) < 500:
-    print(i, number, numberofdivisors(number))
+while number_of_divisors(number) < 500:
+    print(i, number, number_of_divisors(number))
     number += i
     i += 1
 

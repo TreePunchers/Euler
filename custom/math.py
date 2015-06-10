@@ -1,4 +1,4 @@
-def seededseries(seed_a, seed_b, iterations):
+def seeded_series(seed_a, seed_b, iterations):
     a, b = seed_a, seed_b
     for x in range(iterations):
         yield a
@@ -6,7 +6,7 @@ def seededseries(seed_a, seed_b, iterations):
 
 
 def fib(iterations):
-    for n in seededseries(1, 1, iterations):
+    for n in seeded_series(1, 1, iterations):
         yield n
 
 
@@ -30,19 +30,19 @@ def lcm(x, y):
     return (x * y) / gcd(x, y)
 
 
-def trianglenumber(n):
+def triangle_number(n):
     return (n * (n + 1)) / 2
 
 
-def pentagonalnumber(n):
+def pentagonal_number(n):
     return n * (3 * n - 1) / 2
 
 
-def hexagonalnumber(n):
+def hexagonal_number(n):
     return n * (2 * n - 1)
 
 
-def numberofdivisors(n):
+def number_of_divisors(n):
     nod = 0
     sqrt = int(n ** 0.5)
 
@@ -72,7 +72,7 @@ def digits(n):
     return [int(x) for x in str(n)]
 
 
-def properdivisors(n):
+def proper_divisors(n):
     yield 1
 
     largest = int(n ** 0.5)
@@ -87,30 +87,30 @@ def properdivisors(n):
             yield n / x
 
 
-def isabundant(n):
+def isa_bundant(n):
     if n < 12:
         return False
-    return sum(properdivisors(n)) > n
+    return sum(proper_divisors(n)) > n
 
 
 def quadratic(x, a, b, c):
     return (a * (x ** 2)) + (b * x) + c
 
 
-def listprod(values):
+def list_prod(values):
     from operator import mul
     from functools import reduce
     return reduce(mul, values, 1)
 
 
-def tupletoint(t):
+def tuple_to_int(t):
     try:
         return int(''.join(map(str, t)))
     except ValueError:
         return 0
 
 
-def primefactors(n):
+def prime_factors(n):
     primfac = []
     d = 2
     while d * d <= n:
@@ -121,3 +121,35 @@ def primefactors(n):
     if n > 1:
         primfac.append(n)
     return primfac
+
+
+def is_prime(n):
+    """
+    Efficiently checks for primality of high numbers using miller rabin algorithm
+    :param n: Number to check for primality
+    :return: Bool
+    """
+    import random
+
+    d = n - 1
+    s = 0
+    while d % 2 == 0:
+        d >>= 1
+        s += 1
+    for repeat in range(20):
+        a = 0
+        while a == 0:
+            a = random.randrange(n)
+        if not miller_rabin_pass(a, s, d, n):
+            return False
+    return True
+
+def miller_rabin_pass(a, s, d, n):
+    a_to_power = pow(a, d, n)
+    if a_to_power == 1:
+        return True
+    for i in range(s-1):
+        if a_to_power == n - 1:
+            return True
+        a_to_power = (a_to_power * a_to_power) % n
+    return a_to_power == n - 1

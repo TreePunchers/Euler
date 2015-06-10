@@ -1,5 +1,5 @@
 from itertools import permutations
-from custom.math import tupletoint
+from custom.math import tuple_to_int
 
 base = [x for x in range(10)]
 
@@ -13,6 +13,6 @@ for p in permutations(base):
         int(''.join(str(x) for x in p[5:8])) % 11 == 0 and
         int(''.join(str(x) for x in p[6:9])) % 13 == 0 and
         int(''.join(str(x) for x in p[7:10])) % 17 == 0):
-        total += tupletoint(p)
+        total += tuple_to_int(p)
 
 print(total)
