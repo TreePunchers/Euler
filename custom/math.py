@@ -34,12 +34,24 @@ def triangle_number(n):
     return (n * (n + 1)) / 2
 
 
+def square_number(n):
+    return n * n
+
+
 def pentagonal_number(n):
     return n * (3 * n - 1) / 2
 
 
 def hexagonal_number(n):
     return n * (2 * n - 1)
+
+
+def heptagonal_number(n):
+    return n * (5 * n - 3) / 2
+
+
+def octagonal_number(n):
+    return n * (3 * n - 2)
 
 
 def number_of_divisors(n):
@@ -123,7 +135,7 @@ def prime_factors(n):
     return primfac
 
 
-def is_prime(n):
+def mr_is_prime(n):
     """
     Efficiently checks for primality of high numbers using miller rabin algorithm
     :param n: Number to check for primality
@@ -144,6 +156,7 @@ def is_prime(n):
             return False
     return True
 
+
 def miller_rabin_pass(a, s, d, n):
     a_to_power = pow(a, d, n)
     if a_to_power == 1:
@@ -153,3 +166,10 @@ def miller_rabin_pass(a, s, d, n):
             return True
         a_to_power = (a_to_power * a_to_power) % n
     return a_to_power == n - 1
+
+
+def is_prime(n):
+    for i in range(2, int((n ** 0.5) + 1)):
+        if n % i == 0:
+            return False
+    return True

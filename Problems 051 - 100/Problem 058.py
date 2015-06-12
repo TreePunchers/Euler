@@ -1,4 +1,4 @@
-from custom.math import is_prime
+from custom.math import mr_is_prime
 
 diagonals = [1]
 primes_found = 0
@@ -12,7 +12,7 @@ while True:
     for x in range(4):
         current_number += current_increment
         diagonals.append(current_number)
-        if is_prime(current_number):
+        if mr_is_prime(current_number):
             primes_found += 1
     current_increment += increment_change
     if primes_found/len(diagonals) < 0.1:
