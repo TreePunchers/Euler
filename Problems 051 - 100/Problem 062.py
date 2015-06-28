@@ -1,6 +1,5 @@
-from custom.math import digits, tuple_to_int
+from custom.math import digits
 from collections import Counter
-from itertools import permutations
 
 cubes = set([x ** 3 for x in range(10000)])
 
