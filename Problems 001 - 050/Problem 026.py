@@ -1,5 +1,3 @@
-import fractions
-
 def cycle_length(d):
     r_list = []
     qlist_len = 0
