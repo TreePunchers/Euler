@@ -99,7 +99,7 @@ def proper_divisors(n):
             yield n / x
 
 
-def isa_bundant(n):
+def is_abundant(n):
     if n < 12:
         return False
     return sum(proper_divisors(n)) > n
@@ -173,3 +173,11 @@ def is_prime(n):
         if n % i == 0:
             return False
     return True
+
+
+def eulers_totient(n):
+    p_f = set(prime_factors(n))
+    product = n
+    for p in p_f:
+        product *= (1 - 1 / p)
+    return product

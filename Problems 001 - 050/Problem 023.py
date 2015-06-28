@@ -1,6 +1,6 @@
-from custom.math import isa_bundant
+from custom.math import is_abundant
 
-abundant_numbers = set([x for x in range(1, 28123) if isa_bundant(x)])
+abundant_numbers = set([x for x in range(1, 28123) if is_abundant(x)])
 def can_be_sum_of_two_abundant(n):
     for x in abundant_numbers:
         if x > n:
